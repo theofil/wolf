@@ -1,0 +1,37 @@
+git init mylocalrepo
+cd mylocalrepo/
+cp -r ../Tools .
+cd Tools/
+cd CompareAmplitudes/
+rm python/*pyc
+git add Tools/
+git commit -m "Initial commit of ECAL Tools"
+git remote add origin https://github.com/theofil/usercode.git #### YOU need first to create the usercode.git in the github
+git push -u origin master
+
+ssh-keygen -t rsa
+cat id_rsa_github
+cat id_rsa_github.pub
+#add id_rsa_github.pub in git hub
+vim ~/.ssh/config
+Host *github.com
+IdentityFile ~/.ssh/id_rsa_github
+
+git log
+git clone git@github.com:theofil/usercode.git
+cd usercode/
+touch mydevel.txt
+git add mydevel.txt
+git commit -m "my new devel file"
+git status
+git push
+
+
+setenv SCRAM_ARCH slc6_amd64_gcc472
+cmsrel CMSSW_6_2_0_pre7
+cd CMSSW_6_2_0_pre7/src/
+cmsenv
+git addpkg RecoLocalCalo/EcalRecAlgos
+##############################
+git cms-addpkg Configuration/Generator
+
